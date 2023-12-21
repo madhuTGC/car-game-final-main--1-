@@ -964,12 +964,16 @@ let raceCarStartX;
 
 document.addEventListener("touchstart", function (e) {
     e.preventDefault();
+    console.log("Touch Start:", e.touches[0].clientX, e.touches[0].clientY);
+
     touchStartX = e.touches[0].clientX;
     raceCarStartX = player.x;
 });
 
 document.addEventListener("touchmove", function (e) {
     e.preventDefault();
+    console.log("Touch Move:", e.touches[0].clientX, e.touches[0].clientY);
+
     if (touchStartX !== undefined && raceCarStartX !== undefined) {
         const touchX = e.touches[0].clientX;
         const deltaX = touchX - touchStartX;
@@ -977,7 +981,7 @@ document.addEventListener("touchmove", function (e) {
 
         const road = gameArea.getBoundingClientRect();
         console.log(road);
-        player.x = Math.max(Math.max(player.x, 0), road.width - carElement.offsetWidth);
+        player.x = Math.min(Math.max(player.x, 0), road.width - carElement.offsetWidth);
 
     }
 });

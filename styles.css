@@ -595,7 +595,7 @@ input{
 
 /* Updated mobile responsiveness for modal */
 /* Additional styling for mobile responsiveness */
-@media (max-width: 480px) {
+@media (max-width: 720px) {
     .modal-content {
         width: 80%; /* Adjust the width as needed for your design */
         max-width: 100%;
