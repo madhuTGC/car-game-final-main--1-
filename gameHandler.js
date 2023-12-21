@@ -959,6 +959,36 @@ document.addEventListener('keyup', (e)=>{
 
 
 
+// let touchStartX;
+// let raceCarStartX;
+
+// document.addEventListener("touchstart", function (e) {
+//     e.preventDefault();
+//     touchStartX = e.touches[0].clientX;
+//     raceCarStartX = player.x;
+// });
+
+// document.addEventListener("touchmove", function (e) {
+//     e.preventDefault();
+//     if (touchStartX !== undefined && raceCarStartX !== undefined) {
+//         const touchX = e.touches[0].clientX;
+//         const deltaX = touchX - touchStartX;
+//         player.x = raceCarStartX + deltaX;
+
+//         const road = gameArea.getBoundingClientRect();
+//         console.log(road);
+//         player.x = Math.min(Math.max(player.x, 0), road.width - carElement.offsetWidth);
+
+//     }
+// });
+
+// document.addEventListener("touchend", function (e) {
+//     touchStartX = undefined;
+//     raceCarStartX = undefined;
+// });
+
+
+
 let touchStartX;
 let raceCarStartX;
 
@@ -973,12 +1003,11 @@ document.addEventListener("touchmove", function (e) {
     if (touchStartX !== undefined && raceCarStartX !== undefined) {
         const touchX = e.touches[0].clientX;
         const deltaX = touchX - touchStartX;
-        player.x = raceCarStartX + deltaX;
+        let newX = raceCarStartX + deltaX;
 
         const road = gameArea.getBoundingClientRect();
-        console.log(road);
-        player.x = Math.min(Math.max(player.x, 0), road.width - carElement.offsetWidth);
-
+        newX = Math.min(Math.max(newX, 0), road.width - carElement.offsetWidth);
+        player.x = newX;
     }
 });
 
